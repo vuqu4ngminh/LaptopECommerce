@@ -1,6 +1,6 @@
 # LaptopECommerce
 
-## Features
+## Features:
 - [ ] Display List of Laptop
 - [ ] Create new laptop
 - [ ] Update Laptop Infomation
@@ -11,3 +11,8 @@
 - [ ] Display Orders
 - [ ] Create Order
 - [ ] Update Order
+
+## Contributors:
+👨 H1epVu
+👨 lemon0972
+👨 vuqu4ngminh
