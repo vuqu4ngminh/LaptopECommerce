@@ -8,5 +8,6 @@
 - [ ] Compare Laptop Page
 - [ ] Authentication for Admin
 - [ ] Cart
+- [ ] Display Orders
 - [ ] Create Order
 - [ ] Update Order
