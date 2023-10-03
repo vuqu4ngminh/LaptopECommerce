@@ -1,7 +1,7 @@
 # LaptopECommerce
 
 ## Features:
-- [ ] Display List of Laptop
+- [x] Display List of Laptop
 - [ ] Create new laptop
 - [ ] Update Laptop Infomation
 - [ ] Delete Laptop
