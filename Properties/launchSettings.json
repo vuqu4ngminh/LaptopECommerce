@@ -3,11 +3,8 @@
     "LaptopECommerce": {
       "commandName": "Project",
       "launchBrowser": true,
-<<<<<<< HEAD
-=======
       "applicationUrl": "https://localhost:7102;http://localhost:5282",
       "launchUrl": "Laptops",
->>>>>>> f4cf0d433e2ef8e55cce96c228f81fa1d3c0e6f2
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

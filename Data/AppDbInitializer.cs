@@ -11,7 +11,7 @@ namespace LaptopECommerce.Data
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 context.Database.EnsureCreated();
 
-                if(!context.Laptops.Any())
+                if (!context.Laptops.Any())
                 {
                     context.Laptops.AddRange(new List<Laptop>()
                     {
