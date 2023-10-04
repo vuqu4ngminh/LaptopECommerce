@@ -32,6 +32,7 @@ namespace LaptopECommerce.Controllers
             {
                 return View(laptop);
             }
+            
             _service.Add(laptop);
             return RedirectToAction(nameof(Index));
         }

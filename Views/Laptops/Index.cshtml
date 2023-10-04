@@ -6,9 +6,8 @@
 <div class="row">
     @foreach(var item in Model)
     {
-        bool status = bool.Parse(item.Status.ToString());
-        string buttonText = (status) ? "Thêm Vào Giỏ Hàng" : "Hết hàng";
-        string buttonClass = (status) ? "btn-success" : "btn-danger disabled";
+        string buttonText = (item.Status == "1") ? "Thêm Vào Giỏ Hàng" : "Hết hàng";
+        string buttonClass = (item.Status == "1") ? "btn-success" : "btn-danger disabled";
         <div class="col-md-4 col-xs-6 border-primary mb-3">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">

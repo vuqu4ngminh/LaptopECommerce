@@ -44,8 +44,8 @@
                             <div class="form-group">
                                 <label for="Status">Tình trạng:</label>
                                 <select class="form-control" asp-for="Status">
-                                    <option value="">Còn hàng</option>
-                                    <option value="">Hết hàng</option>
+                                    <option value="1">Còn hàng</option>
+                                    <option value="0">Hết hàng</option>
                                 </select>
                                 <span asp-validation-for="Status" class="text-danger"></span>
                             </div>
