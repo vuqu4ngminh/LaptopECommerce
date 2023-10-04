@@ -1,54 +1,64 @@
 ﻿@model Laptop
 
 @{
-    ViewData["Title"] = "Add a new actor";
+    ViewData["Title"] = "Thêm Laptop";
 }
 
-<div class="row test">
-    <div class="col-md-8 offset-2"> 
-        <p>
-            <h1>Add a New Laptop</h1>
-        </p>
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h4 class="text-center">Thêm Laptop</h4>
         <div class="row">
             <div class="col-md-8 offset-2">
+                <div class="col-md-4 offset-4 text-center">
+                    <img width="100%" id="ImageUrlPreview" />
+                </div>
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group text-center">
-                        <img id="ImageURLPreview" />
-                    </div>
-                    <div class="form-group" style="margin-bottom: 10px">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 10px">
-                        <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 10px">
-                        <label asp-for="Price" class="control-label"></label>
-                        <input asp-for="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 10px">
-                        <label asp-for="ImageURL" class="control-label"></label>
-                        <input asp-for="ImageURL" class="form-control" />
-                        <span asp-validation-for="ImageURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 10px">
-                        <label asp-for="Status" class="control-label"></label>
-                        <input asp-for="Status" class="form-check-input" />
-                        <span asp-validation-for="Status" class="text-danger"></span>
-                    </div>
 
+                    <div class="col">
+                        <div class="col-md-6" style="width: 100%;">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label mt-3 mb-3">Tên:</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label mt-3 mb-3">Giá:</label>
+                                <input asp-for="Price" type="number" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageURL" class="control-label mt-3 mb-3">Đường dẫn ảnh:</label>
+                                <input asp-for="ImageURL" class="form-control"/>
+                                <span asp-validation-for="ImageURL" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label mt-3 mb-3">Mô tả</label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Status">Tình trạng:</label>
+                                <select class="form-control" asp-for="Status">
+                                    <option value="1">Còn hàng</option>
+                                    <option value="0">Hết hàng</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-end" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                        <button type="submit" class="btn btn-outline-success float-right">Thêm</button>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Xem tất cả</a>
                     </div>
                 </form>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -56,12 +66,12 @@
     <script>
 
         $(document).ready(function () {
-            var output = document.getElementById('ImageURLPreview');
+            var output = document.getElementById("ImageUrlPreview");
             output.src = $("#ImageURL").val();
         })
 
         $("#ImageURL").on("change", function () {
-            var output = document.getElementById('ImageURLPreview');
+            var output = document.getElementById("ImageUrlPreview");
             output.src = $(this).val();
         })
     </script>

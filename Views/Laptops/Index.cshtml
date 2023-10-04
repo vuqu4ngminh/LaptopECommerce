@@ -6,6 +6,8 @@
 <div class="row">
     @foreach(var item in Model)
     {
+        string buttonText = (item.Status == "1") ? "Thêm Vào Giỏ Hàng" : "Hết hàng";
+        string buttonClass = (item.Status == "1") ? "btn-success" : "btn-danger disabled";
         <div class="col-md-4 col-xs-6 border-primary mb-3">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -37,11 +39,11 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     Chi Tiết
                                 </a>
-                                <a class="btn btn-success text-white @((item.Status) ? "disabled" : "")"
+                                <a class="btn text-white @buttonClass"
                                    asp-controller="Orders"
                                    asp-action="AddItemToShoppingCart"
                                    asp-route-id="@item.Id">
-                                    <i class="bi bi-cart-plus"></i> Thêm Vào Giỏ Hàng
+                                     @buttonText
                                 </a>
                             </p>
                         </div>

@@ -7,18 +7,18 @@ namespace LaptopECommerce.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "Tên không được để trống")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
+        [Required(ErrorMessage = "Mô tả không được để trống")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Price is required")]
+        [Required(ErrorMessage = "Giá không được để trống")]
         public int Price { get; set; }
 
-        [Required(ErrorMessage = "Image is required")]
+        [Required(ErrorMessage = "Đường dẫn không được để trống")]
         public string ImageURL { get; set; }
 
-        public bool Status { get; set; }
+        public string Status { get; set; }
     }
 }
