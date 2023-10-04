@@ -10,7 +10,7 @@ builder.Services.AddScoped<ILaptopsService, LaptopsService>();
 builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
+builder.Services.AddScoped<ILaptopsService, LaptopsService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,5 +32,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-AppDbInitializer.Seed(app);
 app.Run();

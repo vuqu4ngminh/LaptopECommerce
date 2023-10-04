@@ -26,14 +26,14 @@ namespace LaptopECommerce.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name,Description,Price,ImageURL,Status")]Laptop laptop)
+        public async Task<IActionResult> Create([Bind("Name,Price,ImageURL,Description,Status")]Laptop laptop)
         {
             if(!ModelState.IsValid)
             {
                 return View(laptop);
             }
             _service.Add(laptop);
-            return RedirectToAction(nameof(Index)); 
+            return RedirectToAction(nameof(Index));
         }
     }
 }
