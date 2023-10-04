@@ -3,8 +3,11 @@
 @{
     ViewData["Title"] = "Danh sách Laptop";
 }
+<div class="text-white mb-3">
+    <a asp-controller="Laptops" asp-action="Create" class="btn btn-success">Thêm mới</a>
+</div>
 <div class="row">
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         string buttonText = (item.Status == "1") ? "Thêm Vào Giỏ Hàng" : "Hết hàng";
         string buttonClass = (item.Status == "1") ? "btn-success" : "btn-danger disabled";
@@ -43,7 +46,7 @@
                                    asp-controller="Orders"
                                    asp-action="AddItemToShoppingCart"
                                    asp-route-id="@item.Id">
-                                     @buttonText
+                                    @buttonText
                                 </a>
                             </p>
                         </div>
@@ -52,9 +55,4 @@
             </div>
         </div>
     }
-</div>
-
-<div style="position: fixed; right: 25px; bottom: 25px;" class="text-white">
-    <a asp-controller="Laptops" asp-action="Create" class="btn btn-success">
-    <i class="bi bi-plus-circle"> Thêm mới</i></a>
 </div>
