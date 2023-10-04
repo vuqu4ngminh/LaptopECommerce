@@ -1,4 +1,6 @@
 ﻿using LaptopECommerce.Data;
+using LaptopECommerce.Data.Services;
+using LaptopECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,15 +8,32 @@ namespace LaptopECommerce.Controllers
 {
     public class LaptopsController : Controller
     {
-        private readonly AppDbContext _context;
-        public LaptopsController(AppDbContext context)
+        private readonly ILaptopsService _service;
+        public LaptopsController(ILaptopsService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Laptops.ToListAsync();
+            var data = await _service.GetAll();
             return View(data);
+        }
+
+        //Get: Laptops/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Name,Description,Price,ImageURL,Status")]Laptop laptop)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(laptop);
+            }
+            _service.Add(laptop);
+            return RedirectToAction(nameof(Index)); 
         }
     }
 }
