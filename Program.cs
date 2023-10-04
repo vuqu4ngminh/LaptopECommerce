@@ -1,7 +1,10 @@
 using LaptopECommerce.Data;
+using LaptopECommerce.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ILaptopsService, LaptopsService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
