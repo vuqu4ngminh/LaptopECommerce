@@ -4,11 +4,11 @@ namespace LaptopECommerce.Data.Services
 {
     public interface ILaptopsService
     {
-        Task<IEnumerable<Laptop>> GetAll();
+        Task<IEnumerable<Laptop>> GetAllAsync();
         
-        Laptop GetById(int id);
+        Task<Laptop> GetByIdAsync(int id);
 
-        void Add(Laptop laptop);
+        Task AddAsync(Laptop laptop);
 
         Laptop Update(int id, Laptop newLaptop);
 
