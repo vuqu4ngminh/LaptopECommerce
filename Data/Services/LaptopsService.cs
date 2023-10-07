@@ -12,31 +12,36 @@ namespace LaptopECommerce.Data.Services
         {
             _context = context;
         }
-        public void Add(Laptop laptop)
+        public async Task AddAsync(Laptop laptop)
         {
-            _context.Laptops.Add(laptop);
-            _context.SaveChanges();
+            await _context.Laptops.AddAsync(laptop);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Laptops.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Laptops.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Laptop>> GetAll()
+        public async Task<IEnumerable<Laptop>> GetAllAsync()
         {
             var result = await _context.Laptops.ToListAsync();
             return result;
         }
 
-        public Laptop GetById(int id)
+        public async Task<Laptop> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Laptops.FirstOrDefaultAsync(n  => n.Id == id);
+            return result;
         }
 
-        public Laptop Update(int id, Laptop newLaptop)
+        public async Task<Laptop> UpdateAsync(int id, Laptop newLaptop)
         {
-            throw new NotImplementedException();
+            _context.Update(newLaptop);
+            await _context.SaveChangesAsync();
+            return newLaptop;
         }
     }
 }

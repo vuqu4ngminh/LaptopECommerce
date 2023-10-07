@@ -3,7 +3,7 @@
 ## Features:
 - [x] Display List of Laptop
 - [x] Create new laptop
-- [ ] Update Laptop Infomation
+- [x] Update Laptop Infomation
 - [ ] Delete Laptop
 - [ ] Compare Laptop Page
 - [ ] Authentication for Admin

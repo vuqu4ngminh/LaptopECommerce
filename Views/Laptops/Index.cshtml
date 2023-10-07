@@ -42,6 +42,12 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     Chi Tiết
                                 </a>
+                                <a class="btn btn-outline-primary float-right" asp-action="Update" asp-route-id="@item.Id">
+                                    Sửa
+                                </a>
+                                <a class="btn btn-outline-primary float-right" asp-action="Delete" asp-route-id="@item.Id">
+                                    Xóa
+                                </a>
                                 <a class="btn text-white @buttonClass"
                                    asp-controller="Orders"
                                    asp-action="AddItemToShoppingCart"
