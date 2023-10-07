@@ -15,7 +15,7 @@ namespace LaptopECommerce.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAll();
+            var data = await _service.GetAllAsync();
             return View(data);
         }
 
@@ -33,7 +33,38 @@ namespace LaptopECommerce.Controllers
                 return View(laptop);
             }
             
-            _service.Add(laptop);
+            await _service.AddAsync(laptop);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Laptops/Details/1
+         public async Task<IActionResult> Details(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+            return View(laptopDetails);
+        }
+
+        //Get: Laptops/Update/1
+        public async Task<IActionResult> Update(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            return View(laptopDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, [Bind("Id,Name,Price,ImageURL,Description,Status")] Laptop laptop)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(laptop);
+            }
+
+            await _service.UpdateAsync(id, laptop);
             return RedirectToAction(nameof(Index));
         }
     }
