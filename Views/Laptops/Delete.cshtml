@@ -1,33 +1,35 @@
 ﻿@model Laptop
 
 @{
-    ViewData["Title"] = "Thêm Laptop";
+    ViewData["Title"] = " Xóa Laptop";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
-        <h4 class="text-center">Chi tiết</h4>
+        <p>
+            <h1>Xóa @Model.Name</h1>
+        </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <div class="col-md-4 offset-4 text-center">
-                    <img width="100%" id="ImageUrlPreview" />
+                    <img style="max-width: 300px" id="ImageUrlPreview" />
                 </div>
 
                     <div class="col">
                         <div class="col-md-6" style="width: 100%;">
                             <div class="form-group">
                                 <label asp-for="Name" class="control-label mt-3 mb-3">Tên:</label>
-                                <input asp-for="Name" class="form-control" readonly/>
+                                <input asp-for="Name" class="form-control" readonly />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Price" class="control-label mt-3 mb-3">Giá:</label>
-                                <input asp-for="Price" type="number" class="form-control" readonly/>
+                                <input asp-for="Price" type="number" class="form-control" readonly />
                                 <span asp-validation-for="Price" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="ImageURL" class="control-label mt-3 mb-3">Đường dẫn ảnh:</label>
-                                <input asp-for="ImageURL" class="form-control" readonly/>
+                                <input asp-for="ImageURL" class="form-control" readonly />
                                 <span asp-validation-for="ImageURL" class="text-danger"></span>
                             </div>
                         </div>
@@ -38,16 +40,20 @@
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="Status" class="mt-3 mb-3">Tình trạng:</label>
-                                <input asp-for="Status" class="form-control" readonly />
-                            </div>
+                    <div class="form-group" style="padding-bottom: 10px">
+                        <label asp-for="Status" class="mt-3 mb-3">Tình trạng:</label>
+                        @{
+                            string statusText = Model.Status == "1" ? "Còn hàng" : "Hết hàng";
+                        }
+                        <input type="text" class="form-control" value="@statusText" readonly />
                     </div>
 
                     </div>
                     <div class="form-group d-flex justify-content-between">
-                        <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Cập nhật</a>
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Confirm" class="btn btn-danger float-end"
+                        </form>
                         <a class="btn btn-outline-secondary" asp-action="Index">Xem tất cả</a>
                     </div>
             </div>
@@ -63,6 +69,5 @@
             var output = document.getElementById("ImageUrlPreview");
             output.src = $("#ImageURL").val();
         })
-
     </script>
 }

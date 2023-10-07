@@ -18,9 +18,11 @@ namespace LaptopECommerce.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Laptops.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Laptops.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Laptop>> GetAllAsync()
@@ -35,9 +37,11 @@ namespace LaptopECommerce.Data.Services
             return result;
         }
 
-        public Laptop Update(int id, Laptop newLaptop)
+        public async Task<Laptop> UpdateAsync(int id, Laptop newLaptop)
         {
-            throw new NotImplementedException();
+            _context.Update(newLaptop);
+            await _context.SaveChangesAsync();
+            return newLaptop;
         }
     }
 }
