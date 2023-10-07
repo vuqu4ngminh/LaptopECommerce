@@ -12,6 +12,6 @@ namespace LaptopECommerce.Data.Services
 
         Task<Laptop> UpdateAsync(int id, Laptop newLaptop);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

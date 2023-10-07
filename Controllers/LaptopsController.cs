@@ -67,5 +67,27 @@ namespace LaptopECommerce.Controllers
             await _service.UpdateAsync(id, laptop);
             return RedirectToAction(nameof(Index));
         }
+
+        //Get: Laptops/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            return View(laptopDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+             
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
