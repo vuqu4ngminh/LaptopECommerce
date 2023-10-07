@@ -1,6 +1,8 @@
-﻿using LaptopECommerce.Data.Services;
+﻿using LaptopECommerce.Data;
+using LaptopECommerce.Data.Services;
 using LaptopECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaptopECommerce.Controllers
 {
@@ -36,11 +38,56 @@ namespace LaptopECommerce.Controllers
         }
 
         //Get: Laptops/Details/1
-        public async Task<IActionResult> Details(int id)
+         public async Task<IActionResult> Details(int id)
         {
             var laptopDetails = await _service.GetByIdAsync(id);
-            if(laptopDetails == null) return View("Empty");
+
+            if (laptopDetails == null) return View("NotFound");
             return View(laptopDetails);
+        }
+
+        //Get: Laptops/Update/1
+        public async Task<IActionResult> Update(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            return View(laptopDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, [Bind("Id,Name,Price,ImageURL,Description,Status")] Laptop laptop)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(laptop);
+            }
+
+            await _service.UpdateAsync(id, laptop);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Laptops/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            return View(laptopDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var laptopDetails = await _service.GetByIdAsync(id);
+
+            if (laptopDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+             
+            return RedirectToAction(nameof(Index));
         }
     }
 }

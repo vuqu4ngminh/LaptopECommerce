@@ -33,7 +33,7 @@ namespace LaptopECommerce.Data.Services
 
         public async Task<Laptop> GetByIdAsync(int id)
         {
-            var result = _context.Laptops.FirstOrDefault(x => x.Id == id);
+            var result = await _context.Laptops.FirstOrDefaultAsync(n  => n.Id == id);
             return result;
         }
 

@@ -4,7 +4,7 @@
 - [x] Display List of Laptop
 - [x] Create new laptop
 - [x] Update Laptop Infomation
-- [ ] Delete Laptop
+- [x] Delete Laptop
 - [ ] Compare Laptop Page
 - [ ] Authentication for Admin
 - [ ] Cart
